@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperatura Interactiva</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #resultado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2>¿Qué temperatura hace?</h2>
+        <input type="number" id="tempInput" placeholder="Ingresa °C">
+        <button onclick="ejecutarCodigo()">Analizar</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function ejecutarCodigo() {
+            let salida = "";
+            let temperatura = parseFloat(document.getElementById("tempInput").value);
+
+            if (isNaN(temperatura)) {
+                salida = "Por favor ingresa un número válido.";
+            } else {
+                // Condiciones de temperatura
+                if (temperatura > 30) {
+                    salida += "Hace mucho calor, mejor ni salgas pa.<br>";
+                } else if (temperatura > 20 && temperatura <= 30) {
+                    salida += "La temperatura es agradable, dios es grande.<br>";
+                } else {
+                    salida += "Hace fresco o frío, piensa en usar un sueter o chamarra.<br>";
+                }
+
+                // Ciclo
+                for (let i = 0; i < 5; i++) {
+                    salida += "Contando: " + i + "<br>";
+                }
+
+                // Switch
+                let dia = "Lunes";
+
+switch (dia) {
+    case "Lunes":
+        console.log("Inicio de semana");
+        break;
+    case "Viernes":
+        console.log("Casi fin de semana");
+        break;
+    case "Sábado":
+    case "Domingo":
+        console.log("Es fin de semana");
+        break;
+    default:
+        console.log("Día normal");
+}
+               
+            }
+
+            document.getElementById("resultado").innerHTML = salida;
+        }
+    </script>
+
+</body>
+</html>
